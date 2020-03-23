@@ -43,7 +43,7 @@ map.on('style.load', function() {
 
   // add the subway lines and their corresponding colors
   map.addLayer({
-      id: 'fill-med-income-nyc',
+      id: 'subway-lines-fill',
       type: 'fill',
-      source: 'med-income-nyc',
+      source: 'subway-lines',
       paint:
