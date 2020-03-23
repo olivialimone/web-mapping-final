@@ -27,16 +27,23 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on('style.load', function() {
 
 // add a geojson source to the map using our external geojson file
-  map.addSource('subway_access', {
+  map.addSource('subway-access', {
     type: 'geojson',
-    data: './data/subway_access.geojson',
+    data: './data/subway-access.geojson',
   });
 
 // add a geojson source to the map using our external geojson file
-  map.addSource('subway_lines', {
+  map.addSource('subway-lines', {
     type: 'geojson',
-    data: './data/subway_access.geojson',
+    data: './data/subway-access.geojson',
   });
 
   // log the current map state to the console
-  console.log(map.getStyle().sources)
+  console.log(map.getStyle().sources);
+
+  // add the subway lines and their corresponding colors
+  map.addLayer({
+      id: 'fill-med-income-nyc',
+      type: 'fill',
+      source: 'med-income-nyc',
+      paint:

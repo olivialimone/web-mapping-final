@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "subway_access",
+"name": "subway-access",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "stop_id": "101", "stop_name": "Van Cortlandt Park - 242 St", "stop_lat": 40.889248, "stop_lon": -73.898583, "trains": "1", "structure": "Elevated", "stop_id2": null, "GEOID": "36005", "NAMELSAD": "Bronx County", "access": 0, "outages": null }, "geometry": { "type": "Point", "coordinates": [ -73.898583, 40.889247999999867 ] } },
