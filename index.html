@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset='utf-8' />
-    <title>Accessible Subway Map</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
-    <link href='css/styles.css' rel='stylesheet' />
-  </head>
+<head>
+  <meta charset='utf-8' />
+  <title>Accessible Subway Map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='css/styles.css' rel='stylesheet' />
+</head>
 
-  <body>
-    <!-- create sidebar with some text and call to action -->
-    <div id='sidebar'>
-      <h2>Accessible Subway Map</h2>
-      <p>Hover over a subway station to find out the number of subway outages.</p>
-      <div id="feature-info"></div>
+<body>
+  <!-- create sidebar with some text and call to action -->
+  <div id='sidebar'>
+    <h2>Accessible Subway Map</h2>
+    <p>Hover over a subway station to find out the number of subway outages.</p>
+    <div id="feature-info"></div>
+  </div>
+
+  <div id='map-container'></div>
+
+  <!-- code from https://getbootstrap.com/docs/4.3/components/navs/ -->
+  <nav>
+    <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-home" aria-selected="true"> <i class="fas fa-info-circle"></i> Accessibility in NYC</a>
+      <a class="nav-item nav-link" id="nav-methods-tab" data-toggle="tab" href="#nav-methods" role="tab" aria-controls="nav-profile" aria-selected="false"> <i class="fas fa-search"></i> Methodology & Data</a>
     </div>
+  </nav>
 
-    <div id='map-container'></div>
-
-<!-- code from https://getbootstrap.com/docs/4.3/components/navs/ -->
-    <nav>
-        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-home" aria-selected="true"> <i class="fas fa-info-circle"></i> Accessibility in NYC</a>
-          <a class="nav-item nav-link" id="nav-methods-tab" data-toggle="tab" href="#nav-methods" role="tab" aria-controls="nav-profile" aria-selected="false"> <i class="fas fa-search"></i> Methodology & Data</a>
-        </div>
-      </nav>
-
-<!-- Load mapboxGL, jQuery, bootstrap, then the local javascript files -->
+  <!-- Load mapboxGL, jQuery, bootstrap, then the local javascript files -->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
-  <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src='js/scripts.js'></script>
 
 
 
-  </body>
+</body>
+
 </html>

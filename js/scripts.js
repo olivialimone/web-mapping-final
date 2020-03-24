@@ -26,24 +26,24 @@ map.addControl(new mapboxgl.NavigationControl());
 // wait for the initial style to Load
 map.on('style.load', function() {
 
-// add a geojson source to the map using our external geojson file
-  map.addSource('subway-access', {
-    type: 'geojson',
-    data: './data/subway-access.geojson',
-  });
+      // add a geojson source to the map using our external geojson file
+      map.addSource('subway-access', {
+        type: 'geojson',
+        data: './data/subway-access.geojson',
+      });
 
-// add a geojson source to the map using our external geojson file
-  map.addSource('subway-lines', {
-    type: 'geojson',
-    data: './data/subway-access.geojson',
-  });
+      // add a geojson source to the map using our external geojson file
+      map.addSource('subway-lines', {
+        type: 'geojson',
+        data: './data/subway-access.geojson',
+      });
 
-  // log the current map state to the console
-  console.log(map.getStyle().sources);
+      // log the current map state to the console
+      console.log(map.getStyle().sources);
 
-  // add the subway lines and their corresponding colors
-  map.addLayer({
-      id: 'subway-lines-fill',
-      type: 'fill',
-      source: 'subway-lines',
-      paint:
+      // add the subway lines and their corresponding colors
+      map.addLayer({
+            id: 'subway-lines-fill',
+            type: 'fill',
+            source: 'subway-lines',
+            paint:
