@@ -17,60 +17,37 @@ var initOptions = {
   zoom: initialZoom, // initial view zoom level (0-18)
 }
 
-// add a geojson source to the map using our external geojson file
-map.addSource('subway-lines', {
-  type: 'geojson',
-  data: './data/subway-lines.geojson',
-});
-
-//creating a variable for subway colors
-var colorStopsData = [
-  ["1", "#EE352E"],
-  ["2", "#EE352E"],
-  ["3", "#EE352E"],
-  ["4", "#00933C"],
-  ["5", "#00933C"],
-  ["6", "#00933C"],
-  ["7", "#B933AD"],
-  ["G", "#6CBE45"],
-  ["Q", "#FCCC0A"],
-  ["M", "#FF6319"],
-  ["S", "#A7A9AC"],
-  ["A", "#0039A6"],
-  ["B-D", "#FF6319"],
-  ["B-D-F-M", "#FF6319"],
-  ["R", "#FCCC0A"],
-  ["N-Q-R", "#FCCC0A"],
-  ["N-Q", "#FCCC0A"],
-  ["N-R", "#FCCC0A"],
-  ["F", "#FF6319"],
-  ["F-M", "#FF6319"],
-  ["E", "#0039A6"],
-  ["J-Z", "#996633"],
-  ["L", "#A7A9AC"],
-  ["A-C", "#0039A6"],
-  ["D", "#FF6319"],
-  ["1-2-3", "#EE352E"],
-  ["B", "#FF6319"],
-  ["N", "#FCCC0A"],
-  ["4-5-6", "#00933C"],
-  ["N-W", "#FCCC0A"],
-  ["2-3", "#EE352E"],
-  ["4-5", "#00933C"],
-  ["A-C-E", "#0039A6"],
-  ["N-Q-R-W", "#FCCC0A"],
-  ["N-R-W", "#FCCC0A"],
-  ["R-W", "#FCCC0A"]
-]
-
 // create the map
 var map = new mapboxgl.Map(initOptions);
+
+//creating a variable for subway colors
+//there's a variable in the geoJSON with the color per line
+var colorStopsData = [
+  ["#EE352E", "#EE352E"],//color for 123
+  ["#00933C", "#00933C"],//color for 456
+  ["#B933AD", "#B933AD"],//color for 7
+  ["#6CBE45", "#6CBE45"],//color for G
+  ["#FCCC0A", "#FCCC0A"],//color for NQRW
+  ["#2850AD", "#2850AD"],//color for ACE
+  ["#FF6319", "#FF6319"],//color for BDFM
+  ["#996633", "#996633"],//color for JZ
+  ["#A7A9AC", "#A7A9AC"],//color for L
+  ["#6D6E71", "#6D6E71"],//color for 42nd St S
+  ["#808183", "#808183"],//color for Franklin Av S
+  ["#053159", "#053159"],//color for SIR
+]
 
 // add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
 // wait for the initial style to Load
   map.on("load", function() {
+    // add a geojson source to the map using our external geojson file
+    map.addSource('subway-lines', {
+      type: 'geojson',
+      data: './data/subway-lines.geojson',
+    });
+
       map.addLayer({
         id: "subwayLines",
         type: "line",
@@ -81,7 +58,7 @@ map.addControl(new mapboxgl.NavigationControl());
         },
         paint: {
           "line-color": {
-            property: "route_id",
+            property: "color",
             type: "categorical",
             stops: colorStopsData
           },
