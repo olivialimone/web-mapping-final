@@ -18,7 +18,7 @@ var initOptions = {
 }
 
 // add a geojson source to the map using our external geojson file
-map.addSource('subwayLineData', {
+map.addSource('subway-lines', {
   type: 'geojson',
   data: './data/subway-lines.geojson',
 });
@@ -74,17 +74,14 @@ map.addControl(new mapboxgl.NavigationControl());
       map.addLayer({
         id: "subwayLines",
         type: "line",
-        source: {
-          type: "geojson",
-          data: subwayLineData
-        },
+        source: 'subway-lines',
         layout: {
           "line-cap": "round",
           "line-join": "round"
         },
         paint: {
           "line-color": {
-            property: "stop_name",
+            property: "route_id",
             type: "categorical",
             stops: colorStopsData
           },
