@@ -3,7 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoib2xpdmlhbGltb25lIiwiYSI6ImNrNmxmOXNqNzBlZnEzZ
 
 //map centered on NYC
 var initialCenterPoint = [-73.9712, 40.7128]
-var initialZoom = 9.9
+var initialZoom = 9.5
 
 // set the default text for the feature-info div
 var defaultText = '<p>Move the mouse XYZ</p>'
@@ -74,32 +74,72 @@ map.on("load", function() {
       }
     }
   });
-
-map.on('load', function(){
-  // add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
   map.addSource('subway-access', {
     type: 'geojson',
     data: './data/subway-access.geojson',
   });
   map.addLayer({
-      id: "subway-access",
-      type: "symbol",
-      source: "subway-access",
-      layout: {
+    id: "stations",
+    source: "subway-access",
+    type: "circle",
+    paint: {
+      "circle-radius": {
+        base: 1,
+        stops: [
+          [9, 1],
+          [12, 3],
+          [13, 5],
+          [15, 10]
+        ]
+      },
+      "circle-color": "white",
+      "circle-stroke-color": "black",
+      "circle-stroke-width": {
+        base: 1,
+        stops: [
+          [9, 1],
+          [12, 3],
+          [13, 1],
+          [15, 2]
+        ]
+      }
+    }
+  });
 
-        }
-      })
-    });
+  var popupContent = ''
+  if ([station.access] == 1) {
+    popupContent = '[station.stop_name] is accessible'
+  } else {
+    popupContent = '<p>Something else</p>'
+  }
+  var popup = new mapboxgl.Popup({
+      closeOnClick: false
+    })
+    .setLngLat([station.stop_lon], [station.stop_lat])
+    .setHTML()
+    .addTo(map);
 
-//'subway-access'.forEach(function(station) {
+  //map.on('load', function(){
+  // add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
+
+  //map.addLayer({
+  //   id: "subway-access",
+  //type: "symbol",
+  //source: "subway-access",
+  //  layout: {
+
+  //     }
+  //    })
+  //});
+
+  //'subway-access'.forEach(function(station) {
   //  new mapboxgl.Marker()
-    //  .setLngLat([station.stop_lon, station.stop_lat])
-      //.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    //  .setHTML(`${station.stop_name} is {
-      //  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
-      //})
-      //.addTo(map);
-  ;
+  //  .setLngLat([station.stop_lon, station.stop_lat])
+  //.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+  //  .setHTML(`${station.stop_name} is {
+  //  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
+  //})
+  //.addTo(map);
 
   // log the current map state to the console
   //console.log(map.getStyle().sources);

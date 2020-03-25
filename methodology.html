@@ -21,20 +21,25 @@
     <div class="row">
       <div class="col-md-4 full-height">
         <h3>Accessible Subway Map ♿ </h3>
-        <p>Zoom in on the map to find a Subway station. Click on it to find out if it is accessible or not. <br>
-          In accessible stations, see how many elevator outages there were in Febraury 2020.</p>
+        <b>Methodology:</b> <br>
+        <p> Using QGIS, I added a column to each station, labeling 0 or 1 depending on if the station was accessible or not. I used the list of accessible stations from the <a href="http://web.mta.info/accessibility/stations.htm"> MTA Website</a> to
+          determine this. If there was only an elevator that led to a train in only one direction or just to the mezzanine, I counted those stations as inaccessible. Those stations are effectively inaccessible for someone who relies on an elevator
+          completely.I then tallied up the elevator outage data from the <a href="http://eedashboard.mta.info/">MTA Dashboard</a> from February 2020.
+          <br> <br> The limitation with this data is that many stations combine all the lines that run through it, so I was unable to separate outages by specific subway line. Outage data was unfortunately not available for the Staten Island Railroad
+          (SIR) either.
       </div>
       <div class="col-md-8 full-height">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/index.html">About <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="/methodology.html">Methodology</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/data.html">Data </a>
+            </li>
           </ul>
         </nav>
         <div id='map-container'></div>
