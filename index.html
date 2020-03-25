@@ -4,28 +4,50 @@
 <head>
   <meta charset='utf-8' />
   <title>Accessible Subway Map</title>
+  <!-- import bootstrap, mapboxGL, fonts, and css -->
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href='css/styles.css' rel='stylesheet' />
 </head>
 
 <body>
   <!-- create sidebar with some text and call to action -->
   <div id='sidebar'>
-    <h2>Accessible Subway Map</h2>
-    <p>Hover over a subway station to find out the number of subway outages.</p>
+    <h3>Accessible Subway Map ♿ </h3>
+    <p>Click on a Subway station to find out if it is accessible or not. <br>
+      In accessible stations, see how many elevator outages there were in Febraury 2020.</p>
     <div id="feature-info"></div>
   </div>
 
   <div id='map-container'></div>
 
-  <!-- code for sidebar tabs from https://getbootstrap.com/docs/4.3/components/navs/ -->
+  <!--sidebar tabs -->
+  <!-- code for sidebar tabs from https://getbootstrap.com/docs/4.3/components/navs/
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" href="#nav-about">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#nav-methodology">Methodology</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#nav-updates">Live Updates</a>
+    </li>
+  </ul> -->
+
   <nav>
-    <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-home" aria-selected="true"> <i class="fas fa-info-circle"></i> Accessibility in NYC</a>
-      <a class="nav-item nav-link" id="nav-methods-tab" data-toggle="tab" href="#nav-methods" role="tab" aria-controls="nav-profile" aria-selected="false"> <i class="fas fa-search"></i> Methodology & Data</a>
-    </div>
-  </nav>
+      <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-home" aria-selected="true"> <i class="fas fa-info-circle"></i> About</a>
+        <a class="nav-item nav-link" id="nav-methodology-tab" data-toggle="tab" href="#nav-methodology" role="tab" aria-controls="nav-profile" aria-selected="false"> <i class="fas fa-search"></i> Methodology</a>
+        <a class="nav-item nav-link" id="nav-data-tab" data-toggle="tab" href="#nav-data" role="tab" aria-controls="nav-contact" aria-selected="false"> <i class="fas fa-layer-group"></i> Data Sources</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+        <p> test </p>
 
   <!-- Load mapboxGL, jQuery, bootstrap, then the local javascript files -->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
