@@ -74,10 +74,12 @@ map.on("load", function() {
       }
     }
   });
+  //adding subway station data with accessibility and elevator outage information
   map.addSource('subway-access', {
     type: 'geojson',
     data: './data/subway-access.geojson',
   });
+  //adding circles for subway station locations
   map.addLayer({
     id: "stations",
     source: "subway-access",
@@ -92,6 +94,8 @@ map.on("load", function() {
           [15, 10]
         ]
       },
+      //if the station is not accessible, it is red
+      //if the station is accessible, it is green
       "circle-color": [
         'match',
         ['get', 'access'],
@@ -113,6 +117,7 @@ map.on("load", function() {
       }
     }
   });
+  //adding subway station names with same color designation
   map.addLayer({
     id: "stop-name",
     source: "subway-access",
@@ -138,7 +143,8 @@ map.on("load", function() {
         base: 12,
         stops: [
           [9, 0],
-          [12, 0],
+          [12, 8],
+          [13, 10],
           [14, 12],
           [17, 20]
         ]
@@ -148,6 +154,20 @@ map.on("load", function() {
     }
   });
 });
+
+//creating pop ups
+//var accessibility = features.properties.access;
+//if accessibility == 0} {
+//  popupContent = '<h1>Hi There</h1>'
+//} else {
+  //popupContent = '<p>Something else</p>'
+//}
+//var popup = new mapboxgl.Popup({
+  //  closeOnClick: false
+//  })
+  //.setLngLat({stop_lon}, {stop_lat})
+  //.setHTML()
+  //.addTo(map);
 
 //map.on('load', function(){
 // add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
@@ -170,6 +190,3 @@ map.on("load", function() {
 //  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
 //})
 //.addTo(map);
-
-// log the current map state to the console
-//console.log(map.getStyle().sources);
