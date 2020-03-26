@@ -14,7 +14,7 @@ If you would like to get your own MTA elevator outage data, go to the MTA Elevat
 ## Methodology
 Using QGIS, I added a column to each station, labeling 0 or 1 depending on if the station was accessible or not. I used the list of accessible stations from the [MTA's website](http://web.mta.info/accessibility/stations.htm) to determine this. If there was only an elevator that led to a train in only one direction or just to the mezzanine, I counted those stations as inaccessible. Those stations are effectively inaccessible for someone who relies on an elevator completely. I then tallied up the elevator outage data from the [MTA Dashboard](http://eedashboard.mta.info/) from February 2020.
 
-The limitation with this data is that many stations combine all the lines that run through it, so I was unable to separate outages by specific subway line. Outage data was unfortunately not available for the Staten Island Railroad (SIR) either.
+Some stations have multiple elevators so their outage numbers are inflated because of that. The limitation with this data is that many stations combine all the lines that run through it, so I was unable to separate outages by specific subway line. Outage data was unfortunately not available for the Staten Island Railroad (SIR) either.
 
 ## Github page
 You can visit my site [here](https://olivialimone.github.io/web-mapping-final/)!
