@@ -163,6 +163,8 @@ map.on('click', 'stations', function(e) {
   if (e.features[0].properties.access == 0) {
     description = description + " is inaccessible."
   } else {
+//if a station is accessible but doesn't have elevator outage data, just write 'station name is accessible'
+//otherwise, write 'station name is accessible' and give count of how many elevator outages there were
     if (e.features[0].properties.outages == 'null') {
       description = description + " is accessible."
     } else {
