@@ -16,5 +16,5 @@ Using QGIS, I added a column to each station, labeling 0 or 1 depending on if th
 
 The limitation with this data is that many stations combine all the lines that run through it, so I was unable to separate outages by specific subway line. Outage data was unfortunately not available for the Staten Island Railroad (SIR) either.
 
-## Github pages
+## Github page
 You can visit my site [here](https://olivialimone.github.io/web-mapping-final/)!
