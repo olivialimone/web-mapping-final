@@ -155,38 +155,73 @@ map.on("load", function() {
   });
 });
 
-//creating pop ups
-//var accessibility = features.properties.access;
-//if accessibility == 0} {
-//  popupContent = '<h1>Hi There</h1>'
-//} else {
-  //popupContent = '<p>Something else</p>'
-//}
-//var popup = new mapboxgl.Popup({
-  //  closeOnClick: false
-//  })
-  //.setLngLat({stop_lon}, {stop_lat})
-  //.setHTML()
-  //.addTo(map);
+//opens pop up for click event for features in station layer
+//code inspiration from https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
+map.on('click', 'stations', function(e) {
+  var description = e.features[0].properties.stop_name;
 
-//map.on('load', function(){
-// add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
+  if (e.features[0].properties.access == 0) {
+    description = description + " is inaccessible."
+  } else {
+    if (e.features[0].properties.outages == 'null') {
+      description = description + " is accessible."
+    } else {
+      description = description + " is accessible and has had " + e.features[0].properties.outages + " outages in Feb. 2020."
+    }
+  }
 
-//map.addLayer({
-//   id: "subway-access",
-//type: "symbol",
-//source: "subway-access",
-//  layout: {
+  new mapboxgl.Popup()
+    .setLngLat([e.features[0].properties.stop_lon, e.features[0].properties.stop_lat])
+    .setHTML(description)
+    .addTo(map);
+});
 
-//     }
-//    })
-//});
-
-//'subway-access'.forEach(function(station) {
-//  new mapboxgl.Marker()
-//  .setLngLat([station.stop_lon, station.stop_lat])
-//.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-//  .setHTML(`${station.stop_name} is {
-//  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
-//})
-//.addTo(map);
+//event listeners for the fly-to buttons
+$('#nbrooklyn').on('click', function() {
+  map.flyTo({
+    center: [-73.9442, 40.6782],
+    zoom: 12
+  })
+})
+$('#sbrooklyn').on('click', function() {
+  map.flyTo({
+    center: [-73.979820, 40.612544],
+    zoom: 12
+  })
+})
+$('#bronx').on('click', function() {
+  map.flyTo({
+    center: [-73.902126, 40.838733],
+    zoom: 12
+  })
+})
+$('#queens').on('click', function() {
+  map.flyTo({
+    center: [-73.875723, 40.737296],
+    zoom: 12
+  })
+})
+$('#uptown').on('click', function() {
+  map.flyTo({
+    center: [-73.967741, 40.792376],
+    zoom: 12
+  })
+})
+$('#downtown').on('click', function() {
+  map.flyTo({
+    center: [-73.993578, 40.725880],
+    zoom: 12.5
+  })
+})
+$('#staten').on('click', function() {
+  map.flyTo({
+    center: [-74.070514, 40.608486],
+    zoom: 11.85
+  })
+})
+$('#nyc').on('click', function() {
+  map.flyTo({
+    center: initialCenterPoint,
+    zoom: initialZoom
+  })
+})

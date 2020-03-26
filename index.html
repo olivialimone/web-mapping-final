@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8' />
-  <title>Accessible Subway Map</title>
+  <title>Accessibility NYC</title>
   <!-- import bootstrap, mapboxGL, fonts, favicon and css -->
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -20,23 +20,68 @@
   <div class="container-fluid full-height">
     <div class="row">
       <div class="col-md-4 full-height">
-        <h3>Accessible Subway Map ♿ </h3>
-        <p>Zoom in on the map to find a Subway station. Click on it to find out if it is accessible or not. <br>
+        <h3> ♿ Accessibility NYC </h3>
+        <!-- Description of site/call to action -->
+        <p>Get a glimpse of New York City's transit inequity.<br> Zoom in to find a Subway station and click on it to see its accessibility status.
           In accessible stations, see how many elevator outages there were in Febraury 2020.</p>
+        <p>Click on a button below to zoom into a borough/area:</p>
+        <!-- Buttons for flying the map -->
+        <button class='flyto-button' id="nbrooklyn">North Brooklyn</button>
+        <br />
+        <button class='flyto-button' id="sbrooklyn">South Brooklyn</button>
+        <br />
+        <button class='flyto-button' id="bronx">Bronx</button>
+        <br />
+        <button class='flyto-button' id="queens">Queens</button>
+        <br />
+        <button class='flyto-button' id="uptown">Uptown Manhattan</button>
+        <br />
+        <button class='flyto-button' id="downtown">Downtown Manhattan</button>
+        <br />
+        <button class='flyto-button' id="staten">Staten Island</button>
+        <br />
+        <button class='flyto-button' id="nyc">Return to full view</button>
+        <br />
+        <!-- Creating a legend -->
+        <div id="legend">
+          <div> <b> Legend </b> </div>
+          <ul>
+            <li> Inaccessible Station <span class="red-dot"></span></li>
+            <li> Accessible Station <span class="green-dot"></span></li>
+          </ul>
+        </div>
       </div>
       <div class="col-md-8 full-height">
+        <!-- Creating a navigation bar on top to link to other pages on the site-->
+        <!-- Code inspiration: https://getbootstrap.com/docs/4.3/components/navbar/-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/index.html">About <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/methodology.html">Methodology</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/data.html">Data </a>
+              <!-- Creating a dropdown menu for more info -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Learn more
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="https://new.mta.info/elevator-escalator-status">MTA Elevator Status</a>
+                <a class="dropdown-item" href="https://new.mta.info/accessibility">MTA Accessibility</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://github.com/olivialimone/web-mapping-final">Github for this site</a>
+              </div>
+            </li>
           </ul>
         </nav>
+        <!-- Creating the map container -->
         <div id='map-container'></div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8' />
-  <title>Accessible Subway Map</title>
+  <title>Accessibility NYC</title>
   <!-- import bootstrap, mapboxGL, fonts, favicon and css -->
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -20,7 +20,7 @@
   <div class="container-fluid full-height">
     <div class="row">
       <div class="col-md-4 full-height">
-        <h3>Accessible Subway Map ♿ </h3>
+        <h3> ♿ Accessibility NYC </h3>
         <b>Methodology:</b> <br>
         <p> Using QGIS, I added a column to each station, labeling 0 or 1 depending on if the station was accessible or not. I used the list of accessible stations from the <a href="http://web.mta.info/accessibility/stations.htm"> MTA Website</a> to
           determine this. If there was only an elevator that led to a train in only one direction or just to the mezzanine, I counted those stations as inaccessible. Those stations are effectively inaccessible for someone who relies on an elevator
@@ -29,19 +29,36 @@
           (SIR) either.
       </div>
       <div class="col-md-8 full-height">
+        <!-- Creating a navigation bar on top to link to other pages on the site-->
+        <!-- Code inspiration: https://getbootstrap.com/docs/4.3/components/navbar/-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/index.html">About <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item active">
+              <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/methodology.html">Methodology</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/data.html">Data </a>
+              <!-- Creating a dropdown menu for more info -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Learn more
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="https://new.mta.info/elevator-escalator-status">MTA Elevator Status</a>
+                <a class="dropdown-item" href="https://new.mta.info/accessibility">MTA Accessibility</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://github.com/olivialimone/web-mapping-final">Github for this site</a>
+              </div>
             </li>
           </ul>
         </nav>
+        <!-- Creating the map container -->
         <div id='map-container'></div>
       </div>
     </div>
