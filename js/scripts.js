@@ -92,7 +92,14 @@ map.on("load", function() {
           [15, 10]
         ]
       },
-      "circle-color": "white",
+      "circle-color": [
+       'match',
+       ['get', 'access'],
+       0,
+       'red',
+       1,
+       'green',
+       ],
       "circle-stroke-color": "black",
       "circle-stroke-width": {
         base: 1,
@@ -105,28 +112,26 @@ map.on("load", function() {
       }
     }
   });
-
-var accessColor = ''
-if ('feature.properties.access' == 1){
-  accessColor = 'green'}
-  else {
-    accessColor = 'red'
-  }
-})
-
   map.addLayer({
-     id: "stop_name",
+     id: "stop-name",
      source: "subway-access",
      type: "symbol",
      paint: {
-       "text-color": 'accessColor',
+       "text-color": [
+        'match',
+        ['get', 'access'],
+        0,
+        'red',
+        1,
+        'green',
+        ],
        "text-halo-color": "black",
        "text-halo-width": 1,
        "text-halo-blur": 4
      },
      layout: {
        "text-font": ["Open Sans Regular"],
-       "text-field": "{subway-access.stop_name}",
+       "text-field": "{stop_name}",
        "text-size": {
          base: 12,
          stops: [[9, 0], [12, 0], [14, 12], [17, 20]]
@@ -135,19 +140,7 @@ if ('feature.properties.access' == 1){
        "text-offset": [-1.5, 0]
      }
    });
-
-  var popupContent = ''
-  if ([station.access] == 1) {
-    popupContent = '[station.stop_name] is accessible'
-  } else {
-    popupContent = '<p>Something else</p>'
-  }
-  var popup = new mapboxgl.Popup({
-      closeOnClick: false
-    })
-    .setLngLat([station.stop_lon], [station.stop_lat])
-    .setHTML()
-    .addTo(map);
+  });
 
   //map.on('load', function(){
   // add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
