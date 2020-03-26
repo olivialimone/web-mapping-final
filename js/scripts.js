@@ -99,7 +99,7 @@ map.on("load", function() {
        'red',
        1,
        'green',
-       ],
+        '#ccc' ],
       "circle-stroke-color": "black",
       "circle-stroke-width": {
         base: 1,
@@ -124,7 +124,7 @@ map.on("load", function() {
         'red',
         1,
         'green',
-        ],
+        '#ccc'],
        "text-halo-color": "black",
        "text-halo-width": 1,
        "text-halo-blur": 4
