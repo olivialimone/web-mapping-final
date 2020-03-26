@@ -93,13 +93,14 @@ map.on("load", function() {
         ]
       },
       "circle-color": [
-       'match',
-       ['get', 'access'],
-       0,
-       'red',
-       1,
-       'green',
-        '#ccc' ],
+        'match',
+        ['get', 'access'],
+        0,
+        'red',
+        1,
+        'green',
+        '#ccc'
+      ],
       "circle-stroke-color": "black",
       "circle-stroke-width": {
         base: 1,
@@ -113,56 +114,62 @@ map.on("load", function() {
     }
   });
   map.addLayer({
-     id: "stop-name",
-     source: "subway-access",
-     type: "symbol",
-     paint: {
-       "text-color": [
+    id: "stop-name",
+    source: "subway-access",
+    type: "symbol",
+    paint: {
+      "text-color": [
         'match',
         ['get', 'access'],
         0,
         'red',
         1,
         'green',
-        '#ccc'],
-       "text-halo-color": "black",
-       "text-halo-width": 1,
-       "text-halo-blur": 4
-     },
-     layout: {
-       "text-font": ["Open Sans Regular"],
-       "text-field": "{stop_name}",
-       "text-size": {
-         base: 12,
-         stops: [[9, 0], [12, 0], [14, 12], [17, 20]]
-       },
-       "text-anchor": "right",
-       "text-offset": [-1.5, 0]
-     }
-   });
+        '#ccc'
+      ],
+      "text-halo-color": "black",
+      "text-halo-width": 1,
+      "text-halo-blur": 4
+    },
+    layout: {
+      "text-font": ["Open Sans Regular"],
+      "text-field": "{stop_name}",
+      "text-size": {
+        base: 12,
+        stops: [
+          [9, 0],
+          [12, 0],
+          [14, 12],
+          [17, 20]
+        ]
+      },
+      "text-anchor": "right",
+      "text-offset": [-1.5, 0]
+    }
   });
+});
 
-  //map.on('load', function(){
-  // add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
+//map.on('load', function(){
+// add my geojson source of subway stations (with info about accessibility and elevators) to the map using an external geojson file
 
-  //map.addLayer({
-  //   id: "subway-access",
-  //type: "symbol",
-  //source: "subway-access",
-  //  layout: {
+//map.addLayer({
+//   id: "subway-access",
+//type: "symbol",
+//source: "subway-access",
+//  layout: {
 
-  //     }
-  //    })
-  //});
+//     }
+//    })
+//});
 
-  //'subway-access'.forEach(function(station) {
-  //  new mapboxgl.Marker()
-  //  .setLngLat([station.stop_lon, station.stop_lat])
-  //.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-  //  .setHTML(`${station.stop_name} is {
-  //  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
-  //})
-  //.addTo(map);
+//'subway-access'.forEach(function(station) {
+//  new mapboxgl.Marker()
+//  .setLngLat([station.stop_lon, station.stop_lat])
+//.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+//  .setHTML(`${station.stop_name} is {
+//  if ${station.access = 1} accessible and has had ${station.outages} elevator outages in February 2020`))
+//})
+//.addTo(map);
 
-  // log the current map state to the console
-  //console.log(map.getStyle().sources);
+// log the current map state to the console
+//console.log(map.getStyle().sources);
