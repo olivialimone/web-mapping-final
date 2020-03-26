@@ -106,6 +106,36 @@ map.on("load", function() {
     }
   });
 
+var accessColor = ''
+if ('feature.properties.access' == 1){
+  accessColor = 'green'}
+  else {
+    accessColor = 'red'
+  }
+})
+
+  map.addLayer({
+     id: "stop_name",
+     source: "subway-access",
+     type: "symbol",
+     paint: {
+       "text-color": 'accessColor',
+       "text-halo-color": "black",
+       "text-halo-width": 1,
+       "text-halo-blur": 4
+     },
+     layout: {
+       "text-font": ["Open Sans Regular"],
+       "text-field": "{subway-access.stop_name}",
+       "text-size": {
+         base: 12,
+         stops: [[9, 0], [12, 0], [14, 12], [17, 20]]
+       },
+       "text-anchor": "right",
+       "text-offset": [-1.5, 0]
+     }
+   });
+
   var popupContent = ''
   if ([station.access] == 1) {
     popupContent = '[station.stop_name] is accessible'
@@ -143,4 +173,3 @@ map.on("load", function() {
 
   // log the current map state to the console
   //console.log(map.getStyle().sources);
-});
